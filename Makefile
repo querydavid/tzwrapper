@@ -17,3 +17,9 @@ lint: ## Lint the project using cargo
 fmt: ## Format the project using cargo
 	@rustup component add rustfmt 2> /dev/null
 	cargo fmt
+
+all: ## clean/make/fmt/build
+	cargo clean
+	cargo make
+	cargo fmt
+	cargo build
