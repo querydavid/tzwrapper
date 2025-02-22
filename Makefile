@@ -20,6 +20,6 @@ fmt: ## Format the project using cargo
 
 all: ## clean/make/fmt/build
 	cargo clean
-	cargo make
+	cargo clippy
 	cargo fmt
 	cargo build
