@@ -13,4 +13,5 @@ Cargo.lock
 # MSVC Windows builds of rustc generate these, which store debugging information
 *.pdb
 
+#cachefile used the project to store timezones of interest
 tzcache.txt

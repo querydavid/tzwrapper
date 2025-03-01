@@ -32,12 +32,12 @@ fn main() {
     let local: DateTime<Local> = Local::now();
 
     println!(
-        "{:<20}{:02}{}{:02}",
+        "{:<20}{:02}{}{}",
         //local.timezone(), TODO: fix later. Chrono doesn't pretty print, but tz_chrono does
         "System Time".green().bold().underline(),
         local.hour().to_string().green().bold().underline(),
-        ":".green().bold().underline(),
-        local.minute().to_string().green().bold().underline()
+        ":".green().bold().underline(), //just mind boggling workaround to allow continuous underline
+        format!("{:02}", local.minute()).green().bold().underline() //Claude saved me here - the formatter doesn't work on strings, only numbers, but the ANSI formatting doesn't work on numbers, only strings.
     );
 
     if args.save == true {
