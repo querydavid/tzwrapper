@@ -2,6 +2,9 @@ use chrono::prelude::*;
 use chrono_tz::{Tz, TZ_VARIANTS};
 use clap::Parser;
 use colored::*;
+use crossterm::execute;
+use crossterm::terminal::{self, disable_raw_mode, enable_raw_mode, ClearType};
+use std::io::{stdout, Write};
 use std::{fs, io::Error}; //I need to fix error handling. This was auto imported somehow.
 
 #[derive(Debug, Parser)]
@@ -30,7 +33,7 @@ fn main() {
     //let utc: DateTime<Utc> = Utc::now();
     //zonesofinterest.sort(); Tz does not implement Ord. I wonder if there is a PartialOrd way
     let local: DateTime<Local> = Local::now();
-
+    let _ = execute!(stdout(), terminal::Clear(ClearType::All));
     println!(
         "{:<20}{:02}{}{}",
         //local.timezone(), TODO: fix later. Chrono doesn't pretty print, but tz_chrono does
